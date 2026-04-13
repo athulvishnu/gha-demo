@@ -1,0 +1,9 @@
+name: testing push event
+on:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "triggered by push to ${{github.ref_name}}"
