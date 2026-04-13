@@ -1,0 +1,21 @@
+name: three jobs with dependencies
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build phase
+        run: echo "build"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: test phase
+        run: echo "test"
+  deploy:
+    needs: test
+    runs-on: ubuntu:latest
+    steps:
+      - name: deploy
+        run: echo "deploy"
+  
