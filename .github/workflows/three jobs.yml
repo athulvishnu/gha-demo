@@ -14,7 +14,7 @@ jobs:
         run: echo "test"
   deploy:
     needs: test
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: deploy
         run: echo "deploy"
