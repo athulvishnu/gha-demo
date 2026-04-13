@@ -1,0 +1,21 @@
+name: updated version of push and pr event  
+on:
+  push:
+    branches: main
+  pull_request:
+    types:
+     - opened
+     - synchronize
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build phase
+        if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
+        run: echo "triggered by pull request to ${{github.event.pull_request.base.ref}}"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        run: echo "the deployment triggered by push to ${{github.ref_name}}"
